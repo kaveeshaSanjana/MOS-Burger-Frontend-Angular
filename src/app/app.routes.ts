@@ -9,6 +9,7 @@ import { CreateCustomerComponent } from './pages/customer/create-customer/create
 import { UpdateCustomerComponent } from './pages/customer/update-customer/update-customer.component';
 import { ProductViewComponent } from './pages/product-view/product-view.component';
 import { LoginComponent } from './pages/login/login.component';
+import { VeiwCustomerComponent } from './pages/customer/veiw-customer/veiw-customer.component';
 
 export const routes: Routes = [
     {
@@ -48,13 +49,17 @@ export const routes: Routes = [
     {
         path:'customer',
         component:CustomerComponent,
-        children:[  {
-            path:"customer/add",
-            component:CreateCustomerComponent
+        children:[{
+            path:"view",
+            component: VeiwCustomerComponent
     
         },{
-            path:"customer/update/:id",
-            component:UpdateCustomerComponent
+            path:"add",
+            component: CreateCustomerComponent
+    
+        },{
+            path:"update/:id",
+            component: UpdateCustomerComponent
         }]
     },{
         path:'products',

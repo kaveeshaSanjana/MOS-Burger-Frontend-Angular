@@ -1,5 +1,5 @@
 <div
-    class="card d-flex aligns-items-center justify-content-center card text-center w-75 position-absolute top-50 start-50 translate-middle">
+    class="d-flex card justify-content-center position-absolute text-center w-75 aligns-items-center start-50 top-50 translate-middle">
     <div class="card-header">
        Update Customer
     </div>
@@ -36,7 +36,7 @@
                         <input type="text" class="form-control mt-3" [(ngModel)]="customer.telephone"
                             [ngModelOptions]="{standalone: true}" placeholder="Telephone">
                     </div>
-                    <button type="button" (click)="updateCustomer()" class="btn bg-warning form-control mt-3">Update Customer</button>
+                    <button type="button" (click)="updateCustomer()" class="btn form-control bg-warning mt-3">Update Customer</button>
                 </div>
             </div>
         </form>

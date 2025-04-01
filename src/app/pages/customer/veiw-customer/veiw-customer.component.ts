@@ -1,20 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { NgFor } from '@angular/common';
-import {FormsModule} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import Customer from '../../../model/Customer';
 import { RouterLink } from '@angular/router';
-import Customer from '../../model/Customer';
-
+import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-customer',
-  imports: [NgFor , FormsModule , RouterLink],
-  templateUrl: './customer.component.html',
-  styleUrl: './customer.component.css'
+  selector: 'app-veiw-customer',
+  imports: [RouterLink,NgFor],
+  templateUrl: './veiw-customer.component.html',
+  styleUrl: './veiw-customer.component.css'
 })
-export class CustomerComponent implements OnInit {
-
-  constructor(protected http:HttpClient ){}
+export class VeiwCustomerComponent {
+constructor(protected http:HttpClient ){}
 
   public customers: Customer[] = [];
   successMessage: string | null = null;

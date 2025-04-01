@@ -1,14 +1,9 @@
 import { NgFor } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import Order from '../../model/Order';
+import Product from '../../model/Product';
 
-interface Order {
-  orderId: number;
-  email: string;
-  date: string;
-  total:number;
-  product: [{}];
-}
 
 @Component({
   selector: 'app-order',
@@ -43,7 +38,7 @@ export class OrderComponent implements OnInit {
     }
   }
 
-  viewOrder(product: [{}]) {
+  viewOrder(product: Product[]) {
     alert(`Viewing product details: ${product}`);
   }
 }

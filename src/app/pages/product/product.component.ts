@@ -1,14 +1,9 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
-interface CartItem {
-  customerEmail: string;
-  productId: number;
-  qty: number;
-}
+import CartItem from '../../model/CartItem';
 
 @Component({
   selector: 'app-product',

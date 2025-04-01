@@ -2,13 +2,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-
-export interface Order {
-  orderId: number;
-  email: string;
-  date: string;
-  product: string;
-}
+import Order from '../../../model/Order';
 
 @Component({
   selector: 'app-update-order',
