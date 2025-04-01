@@ -1,3 +1,62 @@
 import { Routes } from '@angular/router';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ProductComponent } from './pages/product/product.component';
+import { OrderComponent } from './pages/order/order.component';
+import { UpdateOrderComponent } from './pages/order/update-order/update-order.component';
+import { CustomerComponent } from './pages/customer/customer.component';
+import { CreateProductComponent } from './pages/product/create-product/create-product.component';
+import { CreateCustomerComponent } from './pages/customer/create-customer/create-customer.component';
+import { UpdateCustomerComponent } from './pages/customer/update-customer/update-customer.component';
+import { ProductViewComponent } from './pages/product-view/product-view.component';
+import { LoginComponent } from './pages/login/login.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    {
+        path:'',
+        component:LoginComponent,
+        children:[{
+            path:'login/check',
+            component:DashboardComponent
+        }]
+    },
+    {
+        path:'dashboard',
+        component:DashboardComponent
+    },
+    {
+        path:'product',
+        component:ProductComponent,
+        children:[ 
+        {
+            path:"product/add",
+            component:CreateProductComponent
+        },
+        {
+            path:"product/get-all",
+            component:ProductViewComponent
+        }]
+    },
+    {
+        path:'order',
+        component:OrderComponent,
+        children:[{
+            path:'order/update',
+            component:UpdateOrderComponent
+        }]
+    },
+    
+    {
+        path:'customer',
+        component:CustomerComponent,
+        children:[  {
+            path:"customer/add",
+            component:CreateCustomerComponent
+    
+        },{
+            path:"customer/update/:id",
+            component:UpdateCustomerComponent
+        }]
+    },{
+        path:'products',
+        component:ProductViewComponent
+    }]
