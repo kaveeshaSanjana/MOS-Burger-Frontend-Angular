@@ -17,16 +17,22 @@ export class LoginComponent {
 
   cheackUser(username: string, password: string) {
     if (username != "" && password != "") {
-
-      this.http.get(`http://localhost:8080/api/login/check/${username}/${password}`).subscribe(
-        respons => {
-          if (respons) {
-            this.router.navigate(['/dashboard']);
-          }
-        }, err => {
-
+      console.log(password);
+      
+      localStorage.clear();
+      this.http.get<string>(`/login/check/${username}/${password}`,{responseType:"text" as 'json'}).subscribe(
+        (response: string) => {
+          console.log("Response: " + response);
+      
+          // Safely store the token in local storage
+          localStorage.setItem("token", response);
+      
+          // Navigate to the dashboard
+          this.router.navigate(['/dashboard']);
+        },
+        (error) => {
+          console.error("Error occurred:", error);
         }
-      );
-    }
+      );    }
   }
 }

@@ -23,13 +23,15 @@ constructor(protected http:HttpClient ){}
   }
 
   loadCustomers() {
-   this.http.get<Customer[]>("http://localhost:8080/api/customer/get-all").subscribe(data =>{
+   this.http.get<Customer[]>("/customer/get-all").subscribe(data =>{
+    console.log("i");
+    
      this.customers = data;
    });
   }
 
   deleteCustomer(email:string){
-    this.http.delete(`http://localhost:8080/api/customer/delete/${email}`).subscribe({
+    this.http.delete(`/customer/delete/${email}`).subscribe({
       next: () => {
         this.successMessage = 'Customer deleted successfully!';
         this.errorMessage = null;

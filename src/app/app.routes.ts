@@ -8,17 +8,14 @@ import { CreateProductComponent } from './pages/product/create-product/create-pr
 import { CreateCustomerComponent } from './pages/customer/create-customer/create-customer.component';
 import { UpdateCustomerComponent } from './pages/customer/update-customer/update-customer.component';
 import { ProductViewComponent } from './pages/product-view/product-view.component';
-import { LoginComponent } from './pages/login/login.component';
+import { LoginComponent } from './pages/dashboard/login-routs/login/login.component';
 import { VeiwCustomerComponent } from './pages/customer/veiw-customer/veiw-customer.component';
+import { LoginRoutsComponent } from './pages/dashboard/login-routs/login-routs.component';
 
 export const routes: Routes = [
     {
         path:'',
-        component:LoginComponent,
-        children:[{
-            path:'login/check',
-            component:DashboardComponent
-        }]
+        component:LoginComponent
     },
     {
         path:'dashboard',
@@ -50,7 +47,7 @@ export const routes: Routes = [
         path:'customer',
         component:CustomerComponent,
         children:[{
-            path:"view",
+            path:"",
             component: VeiwCustomerComponent
     
         },{

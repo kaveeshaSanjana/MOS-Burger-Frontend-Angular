@@ -2,17 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { NgFor } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import Customer from '../../model/Customer';
+import { VeiwCustomerComponent } from "./veiw-customer/veiw-customer.component";
 
 
 @Component({
   selector: 'app-customer',
-  imports: [NgFor , FormsModule , RouterLink],
+  imports: [NgFor, FormsModule, RouterLink, VeiwCustomerComponent,RouterOutlet],
   templateUrl: './customer.component.html',
   styleUrl: './customer.component.css'
 })
-export class CustomerComponent implements OnInit {
+export class  CustomerComponent implements OnInit {
 
   constructor(protected http:HttpClient ){}
 
@@ -26,13 +27,13 @@ export class CustomerComponent implements OnInit {
   }
 
   loadCustomers() {
-   this.http.get<Customer[]>("http://localhost:8080/api/customer/get-all").subscribe(data =>{
+   this.http.get<Customer[]>("/customer/get-all").subscribe(data =>{
      this.customers = data;
    });
   }
 
   deleteCustomer(email:string){
-    this.http.delete(`http://localhost:8080/api/customer/delete/${email}`).subscribe({
+    this.http.delete(`/customer/delete/${email}`).subscribe({
       next: () => {
         this.successMessage = 'Customer deleted successfully!';
         this.errorMessage = null;

@@ -23,7 +23,7 @@ export class OrderComponent implements OnInit {
   }
 
    loadOrders(): void {
-    this.http.get<Order[]>("http://localhost:8080/api/order/get-all").subscribe(data => {
+    this.http.get<Order[]>("/order/get-all").subscribe(data => {
       this.orders = data;
       console.log(data);
     });
@@ -31,7 +31,7 @@ export class OrderComponent implements OnInit {
 
   deleteOrder(id: number): void {
     if (confirm('Are you sure you want to delete this order?')) {
-      this.http.delete(`http://localhost:8080/api/order/delete/${id}`).subscribe(res => {
+      this.http.delete(`/order/delete/${id}`).subscribe(res => {
         console.log(res);
         this.loadOrders();
       });

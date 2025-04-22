@@ -20,7 +20,7 @@ export class ProductViewComponent implements OnInit {
   }
 
   loadProducts() {
-    this.http.get("http://localhost:8080/api/product/get-all").forEach(data => {
+    this.http.get("/product/get-all").forEach(data => {
       this.products = data;
       console.log(data);
 
@@ -29,7 +29,7 @@ export class ProductViewComponent implements OnInit {
 
   deleteProduct(id: string) {
     if (confirm("Do you want to Delete ?")){
-      this.http.delete(`http://localhost:8080/api/product/delete/${id}`).subscribe(res => {
+      this.http.delete(`/product/delete/${id}`).subscribe(res => {
         this.loadProducts();
       }
     )}

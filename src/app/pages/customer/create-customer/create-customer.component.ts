@@ -27,7 +27,7 @@ export class CreateCustomerComponent {
   constructor(protected http: HttpClient) { }
 
   addCustomer() {
-    this.http.post("http://localhost:8080/api/customer/save", this.customer).subscribe({
+    this.http.post("/customer/save", this.customer).subscribe({
       next: (res) => {
         if (res) {
           this.successMessage = 'Customer added successfully!';

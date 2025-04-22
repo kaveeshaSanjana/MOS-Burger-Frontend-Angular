@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import CartItem from '../../model/CartItem';
 
@@ -29,7 +29,7 @@ export class ProductComponent implements OnInit {
   }
 
   loadProducts() {
-    this.http.get<any[]>("http://localhost:8080/api/product/get-all").subscribe(data => {
+    this.http.get<any[]>("/product/get-all",).subscribe(data => {
       console.log(data);
       this.products = data;
     })
@@ -45,7 +45,7 @@ export class ProductComponent implements OnInit {
   addToCart(id: number) {
     this.p.productId = id;
     this.p.customerEmail = this.enputEmail;
-    this.http.post('http://localhost:8080/api/cart/save', this.p).subscribe(res => {
+    this.http.post('/cart/save', this.p).subscribe(res => {
       console.log(res);
       this.loadCustomerCart(this.enputEmail);
     });
@@ -54,7 +54,7 @@ export class ProductComponent implements OnInit {
   public loadCustomerCart(email: string) {
     if(this.enputEmail!=""){
       
-    this.http.get(`http://localhost:8080/api/cart/get/${email}`).subscribe(data => {
+    this.http.get(`/cart/get/${email}`).subscribe(data => {
       this.getTotal(data);
       this.cart = data;
     })
@@ -86,7 +86,7 @@ export class ProductComponent implements OnInit {
     this.order.date = new Date();
     this.order.total = this.total;
     this.order.credit = (this.total *10/100);
-    this.http.post('http://localhost:8080/api/order/place-order',this.order).subscribe(res=>{
+    this.http.post('/order/place-order',this.order).subscribe(res=>{
       this.loadCustomerCart(this.enputEmail);
     })
   }

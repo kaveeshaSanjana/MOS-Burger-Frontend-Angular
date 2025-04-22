@@ -30,7 +30,7 @@ export class CreateProductComponent {
   }
   
   addProduct(){
-    this.http.post("http://localhost:8080/api/product/save",this.pdct).subscribe(res=>{
+    this.http.post("/api/product/save",this.pdct).subscribe(res=>{
       console.log(res);
     })
   }

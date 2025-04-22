@@ -27,7 +27,7 @@ export class UpdateCustomerComponent implements OnInit {
   }
 
   loadCustomer(id: string | null) {
-    this.http.get<any>(`http://localhost:8080/api/customer/get/${id}`).subscribe({
+    this.http.get<any>(`/customer/get/${id}`).subscribe({
       next: (data) => {
         this.customer = data;
       },
@@ -39,7 +39,7 @@ export class UpdateCustomerComponent implements OnInit {
 
   updateCustomer() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.http.put(`http://localhost:8080/api/customer/update`, this.customer).subscribe({
+    this.http.put(`/customer/update`, this.customer).subscribe({
       next: (res) => {
         this.successMessage = 'Customer updated successfully!';
         this.errorMessage = null;
